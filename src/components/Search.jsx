@@ -4,7 +4,7 @@ function Search( {updateDatos} ) {
     
     return(
         <div>
-            <input onChange={updateDatos} type="text" name="name"/>
+            <input className="search" placeholder="Search" onChange={updateDatos} type="text"/>
         </div>
     )
 }

@@ -26,8 +26,10 @@ function CharacterList() {
 
     return(
         <div className="return-characters">
+            <div className="container-search">
             <Search updateDatos={updateDatos}/>
             <Pagination info={info} getCharacters={getCharacters}/>
+            </div>
             {characters &&
                 <div className="container">
                     <Character

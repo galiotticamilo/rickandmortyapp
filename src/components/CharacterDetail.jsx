@@ -21,21 +21,40 @@ function CharacterDetail() {
     }, [])
 
     return(
-        <div>
-            {character && 
-                <div>
-                    <div>Name: {character.name}</div>
-                    <img src={character.image}/>
-                    <div>Specie: {character.species}</div>
-                    <div>Gender: {character.gender}</div>
-                    <div>Status: {character.status}</div>
-                    <div>Origin: {character.origin.name}</div>
-                    <div>Location: {character.location.name}</div>
+        <div className="character-detail">
+            <div className="container-card">
+                <div className="detail-container">
+                    {character && 
+                        <div className="card">
+                            <img src={character.image}/>
+                            <div className="datos">
+                                <div>
+                                    <div>Name: <span>{character.name}</span></div>
+                                    <div>Specie: <span>{character.species}</span></div>
+                                    <div>Gender: <span>{character.gender}</span></div>
+                                    {
+                                    (character.status == "Alive") ? 
+                                        <div className="status">
+                                            <div className="green">•</div>
+                                            {character.status} 
+                                        </div> 
+                                        : 
+                                        <div className="status">
+                                            <div className="red">•</div>
+                                            {character.status} 
+                                        </div> 
+                                    }
+                                    <div>Origin: <span>{character.origin.name}</span></div>
+                                    <div>Location: <span>{character.location.name}</span></div>
+                                </div>
+                                <Link className="none" to="/">
+                                    <div className="back-button">Back</div>
+                                </Link>
+                            </div>
+                        </div>
+                    }
                 </div>
-            }
-            <Link to="/">
-                <div>Back</div>
-            </Link>
+            </div>
         </div>
     )
 }

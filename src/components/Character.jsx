@@ -8,11 +8,27 @@ function Character( {data} ) {
             {
                 data?.map(elem => 
                     <div className="contenedor-item">
-                        <div>{elem.name}</div>
+                        <div className="name">{elem.name}</div>
                         <Link to={`/character/${elem.id}`}>
                             <img className="img" src={elem.image}/>
                         </Link>
-                        {elem.status}
+                        <div className="info">
+                            <div>
+                                {elem.species}
+                            </div>
+                            {
+                            (elem.status == "Alive") ? 
+                                <div className="status">
+                                    <div className="green">•</div>
+                                    {elem.status} 
+                                </div> 
+                                : 
+                                <div className="status">
+                                    <div className="red">•</div>
+                                    {elem.status} 
+                                </div> 
+                            }
+                        </div>
                     </div>
                 )
             }

@@ -13,8 +13,8 @@ function Pagination( {info, getCharacters} ) {
     return(
         <div>
             <div className="container-buttons">
-                <button onClick={onPrev}>prev</button>
-                <button onClick={onNext}>next</button>
+                <button className="prev-next" onClick={onPrev}> &lt; Prev</button>
+                <button className="prev-next" onClick={onNext}>Next &gt;</button>
             </div>
         </div>
     )
