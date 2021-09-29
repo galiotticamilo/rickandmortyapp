@@ -6,30 +6,33 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Random from "./components/Random"
 import Advanced from './components/Advanced';
 import CharacterDetail from './components/CharacterDetail';
+import { RAMProvider } from './context/Context';
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Navbar/>
-        <Switch>
-          <Route exact path="/">
-            <CharacterList/>
-          </Route>
+    <RAMProvider>
+      <BrowserRouter>
+        <Navbar/>
+          <Switch>
+            <Route exact path="/">
+              <CharacterList/>
+            </Route>
 
-          <Route exact path="/random-character">
-            <Random/>
-          </Route>
+            <Route exact path="/random-character">
+              <Random/>
+            </Route>
 
-          <Route exact path="/advanced-search">
-            <Advanced/>
-          </Route>
+            <Route exact path="/advanced-search">
+              <Advanced/>
+            </Route>
 
-          <Route exact path="/character/:id">
-            <CharacterDetail/>
-          </Route>
-        </Switch>
-      </BrowserRouter>
+            <Route exact path="/character/:id">
+              <CharacterDetail/>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </RAMProvider>
   );
 }
 

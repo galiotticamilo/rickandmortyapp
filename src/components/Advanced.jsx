@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react"
 import Character from "./Character"
 import Pagination from "./Pagination"
-import Search from "./Search"
 
 function Advanced() {
     
     const [showCharacters, setShowCharacters] = useState()
     const [info, setInfo] = useState()
-    const [urlAdvanced, setUrlAdvanced] = useState(`https://rickandmortyapi.com/api/character`)
-    const [searchValue, setSearchValue] = useState("")
+    const [urlAdvanced, setUrlAdvanced] = useState([`https://rickandmortyapi.com/api/character`])
+
+    const urlDefault = `https://rickandmortyapi.com/api/character`
 
     function getCharacters(url) {
         fetch(url)
@@ -19,42 +19,42 @@ function Advanced() {
         })
     }
 
-    const updateDatos = (event) => {
-        setSearchValue(event.target.value)
-    }
-
-    useEffect(() => {
-        getCharacters(`${urlAdvanced}&name=${searchValue}`)
-    }, [searchValue])
-
-    const alive = () => {
-        setUrlAdvanced("https://rickandmortyapi.com/api/character/?status=alive")
-    }
-    const human = () => {
-        setUrlAdvanced("https://rickandmortyapi.com/api/character/?species=human")
-    }
-    const male = () => {
-        setUrlAdvanced("https://rickandmortyapi.com/api/character/?gender=male")
-    }
-    const female = () => {
-        setUrlAdvanced("https://rickandmortyapi.com/api/character/?gender=female")
+    const filter = (value, tipe) => {
+        setUrlAdvanced(`${urlDefault}/?${tipe}=${value}`)
     }
 
     useEffect(() => {
         getCharacters(urlAdvanced)
+        console.log(urlAdvanced)
     }, [urlAdvanced])
 
     return(
-        <div>
-            <div>
-                <div onClick={human}>human</div>
-                <div onClick={male}>male</div>
-                <div onClick={female}>female</div>
-                <div onClick={alive}>alive</div>
-            </div>
+        <div className="return-characters">
+            <div className="container-search">
+                <div className="select-container">
+                    <label>Filter by</label>
+                    <select className="select">
+                        <option selected hidden>Select</option>
+                        <optgroup className="group" label="Gender">
+                            <option onClick={() => filter("female", "gender")}>Female</option>
+                            <option onClick={() => filter("male", "gender")}>Male</option>
+                            <option onClick={() => filter("unknown", "gender")}>Unknown</option>
+                        </optgroup>
+                        <optgroup className="group" label="Status">
+                            <option onClick={() => filter("alive", "status")}>Alive</option>
+                            <option onClick={() => filter("dead", "status")}>Dead</option>
+                            <option onClick={() => filter("unknown", "status")}>Unknown</option>
+                        </optgroup>
+                        <optgroup className="group" label="Species">
+                            <option onClick={() => filter("human", "species")}>Human</option>
+                            <option onClick={() => filter("alien", "species")}>Alien</option>
+                            <option onClick={() => filter("unknown", "species")}>Unknown</option>
+                        </optgroup>
+                    </select>
+                </div>
 
-            <Search updateDatos={updateDatos}/>
-            <Pagination info={info} getCharacters={getCharacters}/>
+                <Pagination info={info} getCharacters={getCharacters}/>
+            </div>
             {
                 showCharacters &&
                 <div className="container">

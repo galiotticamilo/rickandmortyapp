@@ -11,7 +11,6 @@ function CharacterDetail() {
 
     const getCharacterDetail = async () => {
         const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
-        console.log(response)
         const data = await response.json()
         setCharacter(data)
     }

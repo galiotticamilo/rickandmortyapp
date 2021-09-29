@@ -1,24 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import Search from './Search';
+import React, { useEffect } from 'react';
 import Pagination from './Pagination';
 import Character from './Character';
+import useRAM from "../context/Context"
 
 function CharacterList() {
 
-    const [characters, setCharacters] = useState()
-    const [info, setInfo] = useState()
-    const [searchValue, setSearchValue] = useState("")
-
-    const getCharacters = async (url) => {
-        const response = await fetch(url)
-        const data = await response.json()
-        setCharacters(data.results)
-        setInfo(data.info)
-    }
-
-    const updateDatos = (event) => {
-        setSearchValue(event.target.value)
-    }
+    const {getCharacters, characters, info, searchValue} = useRAM()
 
     useEffect(() => {
         getCharacters(`https://rickandmortyapi.com/api/character/?name=${searchValue}`)
@@ -26,10 +13,7 @@ function CharacterList() {
 
     return(
         <div className="return-characters">
-            <div className="container-search">
-            <Search updateDatos={updateDatos}/>
             <Pagination info={info} getCharacters={getCharacters}/>
-            </div>
             {characters &&
                 <div className="container">
                     <Character
