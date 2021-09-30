@@ -16,8 +16,14 @@ function Pagination() {
     return(
         <div>
             <div className="container-buttons">
+                {info.prev ? 
                 <button className="prev-next" onClick={onPrev}> &lt; Prev</button>
+                :
+                <div></div>
+                }
+                {info.next && 
                 <button className="prev-next" onClick={onNext}>Next &gt;</button>
+                }
             </div>
         </div>
     )

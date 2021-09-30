@@ -6,18 +6,18 @@ function Navbar() {
     return(
         <div className="container-navbar">
             <div className="container-search-links">
-                <Link to="/">
-                    <h1 className="rick-morty">Rick&Morty Wiki</h1>
+                <Link className="rick-morty"to="/">
+                    <h1>Rick&Morty Wiki</h1>
                 </Link>
                 <div className="links">
                     <Link className="navbar-link" to="/">
                         <div>Home</div>
                     </Link>
                     <Link className="navbar-link" to="/advanced-search">
-                        <div>Search Character</div>
+                        <div>Search</div>
                     </Link>
                     <Link className="navbar-link" to="/random-character">
-                        <div>Random Character</div>
+                        <div>Random</div>
                     </Link>
                 </div>
             </div>

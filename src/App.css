@@ -1,5 +1,5 @@
 * {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 body {
@@ -314,6 +314,7 @@ span {
 }
 
 .clear {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   width: 5.5rem;
@@ -321,16 +322,27 @@ span {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 1rem;
   padding: 0.79rem;
+  transition: 0.3s;
+}
+
+.clear:hover {
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .rick-morty {
   text-shadow: 0.7rem 0.5rem 0.5rem black;
   color: rgba(255, 255, 255, 0.8);
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .rick-morty:hover {
   color: rgba(255, 255, 255, 1);
+}
+
+.no-results {
+  margin-top: 4rem;
+  color: white;
 }
 
 

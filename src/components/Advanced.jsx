@@ -5,12 +5,9 @@ import useRAM from "../context/Context"
 import Search from "./Search"
 
 function Advanced() {
-    
-    const urlDefault = `https://rickandmortyapi.com/api/character`
 
-    const {searchValue, getCharacters, characters, updateDatos, setSearchValue} = useRAM()
+    const {searchValue, getCharacters, characters, updateDatos, setSearchValue, urlDefault, urlAdvanced, setUrlAdvanced, noResults} = useRAM()
 
-    const [urlAdvanced, setUrlAdvanced] = useState(urlDefault)
     const [stateFilter, setStateFilter] = useState({})
 
     const clear = () => {
@@ -20,10 +17,11 @@ function Advanced() {
     
     const filter = (value, tipe) => {
         setStateFilter({value, tipe})
+
         searchValue ? 
         setUrlAdvanced(`${urlDefault}/?${tipe}=${value}&name=${searchValue}`)
-        :
-        setUrlAdvanced(`${urlDefault}/?${tipe}=${value}`)
+        : 
+        setUrlAdvanced(`${urlDefault}/?${tipe}=${value}`) 
     }
 
     const searchUpdate = (event) => {
@@ -32,7 +30,7 @@ function Advanced() {
         stateFilter ? 
         setUrlAdvanced(`${urlDefault}/?${stateFilter.tipe}=${stateFilter.value}&name=${searchValue}`) 
         : 
-        setUrlAdvanced(`${urlDefault}/?name=${searchValue}`);
+        setUrlAdvanced(`${urlDefault}/?name=${searchValue}`)
     }
 
     useEffect(() => {
@@ -69,19 +67,18 @@ function Advanced() {
                         </div>
                     </div>
                 </div>
-                <Pagination updateDatos={updateDatos}/>
+                {characters && <Pagination updateDatos={updateDatos}/>}
             </div>
             {
                 characters ?
                 <div className="container">
                     <Character
-                    key={characters.id}
                     data={characters}
                     />
                 </div> : 
-                <div>NO HAY NADA PERRO</div>
+                <h2 className="no-results">{noResults}...</h2>
             }
-            <Pagination/>
+            {characters &&<Pagination/>}
         </div>
     )
 }

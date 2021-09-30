@@ -4,9 +4,7 @@ import useRAM from "../context/Context"
 
 function Random() {
 
-    const {count, getCharacters} = useRAM()
-    
-    const urlDefault = "https://rickandmortyapi.com/api/character"
+    const {count, getCharacters, urlDefault} = useRAM()
 
     const [randomCharacter, setRandomCharacter] = useState()
 
