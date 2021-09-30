@@ -17,7 +17,7 @@ function Character( {data} ) {
                                 {elem.species}
                             </div>
                             {
-                            (elem.status == "Alive") ? 
+                            (elem.status === "Alive") ? 
                                 <div className="status">
                                     <div className="green">•</div>
                                     {elem.status} 

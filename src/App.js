@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CharacterList from './components/CharacterList';
+import HomePage from './components/HomePage';
 import Navbar from './components/Navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Random from "./components/Random"
@@ -16,7 +16,7 @@ function App() {
         <Navbar/>
           <Switch>
             <Route exact path="/">
-              <CharacterList/>
+              <HomePage/>
             </Route>
 
             <Route exact path="/random-character">

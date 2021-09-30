@@ -1,26 +1,24 @@
 import React, {useState} from "react"
 import { useEffect } from "react/cjs/react.development";
+import useRAM from "../context/Context"
 
 function Random() {
 
-    const [randomCharacter, setRandomCharacter] = useState()
-    const [count, setCount] = useState()
+    const {count, getCharacters} = useRAM()
+    
+    const urlDefault = "https://rickandmortyapi.com/api/character"
 
-    const getAllCharacters = async () => {
-        const response = await fetch("https://rickandmortyapi.com/api/character")
-        const data = await response.json()
-        setCount(data.info.count)
-    }
+    const [randomCharacter, setRandomCharacter] = useState()
 
     useEffect(() => {
-        getAllCharacters()
+        getCharacters(urlDefault)
     }, [])
 
     const randomNum = (count) => {
         return (Math.floor(Math.random() * (count - 1) + 1))
     }
 
-    const getCharacters = async () => {
+    const getRandomCharacter = async () => {
         const response = await fetch(`https://rickandmortyapi.com/api/character/${randomNum(count)}`)
         const data = await response.json()
         let array = []
@@ -43,7 +41,7 @@ function Random() {
                                             <div>Specie: <span>{elem.species}</span></div>
                                             <div>Gender: <span>{elem.gender}</span></div>
                                             {
-                                            (elem.status == "Alive") ? 
+                                            (elem.status === "Alive") ? 
                                                 <div className="status">
                                                     <div className="green">•</div>
                                                     {elem.status} 
@@ -64,7 +62,7 @@ function Random() {
                     )
                 }
                 {count &&
-                    <button className="random-button" onClick={getCharacters}>
+                    <button className="random-button" onClick={getRandomCharacter}>
                         <div>Generate random character</div>
                     </button> 
                 }

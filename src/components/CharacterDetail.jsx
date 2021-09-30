@@ -32,7 +32,7 @@ function CharacterDetail() {
                                     <div>Specie: <span>{character.species}</span></div>
                                     <div>Gender: <span>{character.gender}</span></div>
                                     {
-                                    (character.status == "Alive") ? 
+                                    (character.status === "Alive") ? 
                                         <div className="status">
                                             <div className="green">•</div>
                                             {character.status} 
@@ -46,7 +46,7 @@ function CharacterDetail() {
                                     <div>Origin: <span>{character.origin.name}</span></div>
                                     <div>Location: <span>{character.location.name}</span></div>
                                 </div>
-                                <Link className="none" to="/">
+                                <Link className="none" to="/advanced-search">
                                     <div className="back-button">Back</div>
                                 </Link>
                             </div>

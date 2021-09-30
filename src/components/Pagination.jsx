@@ -1,6 +1,9 @@
 import React from "react";
+import useRAM from "../context/Context"
 
-function Pagination( {info, getCharacters} ) {
+function Pagination() {
+
+    const {info, getCharacters} = useRAM()
 
     const onPrev = () => {
         getCharacters(info.prev)

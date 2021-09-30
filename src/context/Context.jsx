@@ -9,6 +9,7 @@ export const RAMProvider = props => {
     const [characters, setCharacters] = useState()
     const [info, setInfo] = useState()
     const [searchValue, setSearchValue] = useState("")
+    const [count, setCount] = useState()
 
     const updateDatos = (event) => {
         setSearchValue(event.target.value)
@@ -19,6 +20,7 @@ export const RAMProvider = props => {
         const data = await response.json()
         setCharacters(data.results)
         setInfo(data.info)
+        setCount(data.info.count)
     }
 
     return (
@@ -27,7 +29,10 @@ export const RAMProvider = props => {
             info,
             characters,
             searchValue,
-            updateDatos
+            setSearchValue,
+            updateDatos,
+            setInfo,
+            count
             }}
             >
             {props.children}

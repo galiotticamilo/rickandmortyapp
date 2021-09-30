@@ -1,10 +1,10 @@
 import React from "react"
 
-function Search( {updateDatos} ) {
-    
+function Search( {searchUpdate} ) {
+
     return(
         <div>
-            <input className="search" placeholder="Search" onChange={updateDatos} type="text"/>
+            <input className="search" placeholder="Search" onChange={searchUpdate} type="text"/>
         </div>
     )
 }
