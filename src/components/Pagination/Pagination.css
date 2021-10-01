@@ -1,0 +1,23 @@
+    .prev-next {
+        font-size: 1rem;
+        padding: 0.5rem;
+        margin: 0rem 0.5rem 0.5rem 0.5rem;
+        width: 6rem;
+        border-style: hidden;
+        border-radius: 1.2rem;
+        color:white;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: 0.5s;
+    }
+    
+    .prev-next:hover {
+        color: black;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .container-buttons {
+        width: 84rem;
+        display: flex;
+        justify-content: space-between;
+      }

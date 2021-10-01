@@ -28,9 +28,9 @@ export const RAMProvider = props => {
             setCharacters("")
             setCount("")
         } else {
-            setInfo(data.info)
-            setCharacters(data.results)
-            setCount(data.info.count)
+            setInfo(await data.info)
+            setCharacters(await data.results)
+            setCount(await data.info.count)
         } 
     }
     

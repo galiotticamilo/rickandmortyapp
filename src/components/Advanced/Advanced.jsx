@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react"
-import Character from "./Character"
-import Pagination from "./Pagination"
-import useRAM from "../context/Context"
-import Search from "./Search"
+import Character from "../Character/Character"
+import Pagination from "../Pagination/Pagination"
+import useRAM from "../../context/Context"
+import Search from "../Search/Search"
+import "../Advanced/Advanced.css"
 
 function Advanced() {
 
@@ -38,15 +39,15 @@ function Advanced() {
     }, [urlAdvanced, searchValue, stateFilter])
 
     return(
-        <div className="return-characters">
-            <div className="container-search">
-                <div className="advanced-container">
+        <div className="main-advanced-container">
+            <div className="advanced-container">
+                <div className="search-filters-container">
                     <Search className="input-search" searchUpdate={searchUpdate}/>
-                    <div className="container-clear">
+                    <div className="filter-container">
                         <div className="clear" onClick={clear}>Clear filters</div>
                         <div className="select-container">
                             <label>Filter by</label>
-                            <select className="select">
+                            <select className="option-select">
                                 <option defaultValue hidden>Select</option>
                                 <optgroup className="group" label="Gender">
                                     <option onClick={() => filter("female", "gender")}>Female</option>

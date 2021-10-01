@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HomePage from './components/HomePage';
-import Navbar from './components/Navbar';
+import HomePage from './components/HomePage/HomePage';
+import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Random from "./components/Random"
-import Advanced from './components/Advanced';
-import CharacterDetail from './components/CharacterDetail';
+import Random from "./components/Random/Random"
+import Advanced from './components/Advanced/Advanced';
+import CharacterDetail from './components/CharacterDetail/CharacterDetail';
 import { RAMProvider } from './context/Context';
 
 function App() {

@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { useEffect } from "react/cjs/react.development";
-import useRAM from "../context/Context"
+import useRAM from "../../context/Context"
+import "../Random/Random.css"
 
 function Random() {
 
@@ -25,15 +26,15 @@ function Random() {
     }
     
     return(
-        <div className="vh">
-            <div className="generate-detail">
+        <div className="main-random-container">
+            <div className="buttom-random-detail-container">
                 {randomCharacter &&
                     randomCharacter.map(elem => 
-                        <div className="random-return">
-                            <div className="container-random">
+                        <div className="random-detail-container">
+                            <div className="random-info-container">
                                 <div className="card">
                                     <img src={elem.image}/>
-                                    <div className="datos">
+                                    <div className="data">
                                         <div>
                                             <div>Name: <span>{elem.name}</span></div>
                                             <div>Specie: <span>{elem.species}</span></div>

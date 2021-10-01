@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import { useParams } from "react-router"
 import {Link} from "react-router-dom"
-
+import "../CharacterDetail/CharacterDetail.css"
 
 function CharacterDetail() {
 
@@ -20,13 +20,12 @@ function CharacterDetail() {
     }, [])
 
     return(
-        <div className="character-detail">
-            <div className="container-card">
-                <div className="detail-container">
+        <div className="main-detail-container">
+            <div className="detail-container">
                     {character && 
                         <div className="card">
                             <img src={character.image}/>
-                            <div className="datos">
+                            <div className="data">
                                 <div>
                                     <div>Name: <span>{character.name}</span></div>
                                     <div>Specie: <span>{character.species}</span></div>
@@ -46,13 +45,12 @@ function CharacterDetail() {
                                     <div>Origin: <span>{character.origin.name}</span></div>
                                     <div>Location: <span>{character.location.name}</span></div>
                                 </div>
-                                <Link className="none" to="/advanced-search">
+                                <Link className="back-button-container" to="/advanced-search">
                                     <div className="back-button">Back</div>
                                 </Link>
                             </div>
                         </div>
                     }
-                </div>
             </div>
         </div>
     )

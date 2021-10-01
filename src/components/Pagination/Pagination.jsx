@@ -1,5 +1,6 @@
 import React from "react";
-import useRAM from "../context/Context"
+import useRAM from "../../context/Context"
+import "../Pagination/Pagination.css"
 
 function Pagination() {
 
