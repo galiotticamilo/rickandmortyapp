@@ -1,78 +1,140 @@
-    .main-advanced-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100rem;
-    }
+.main-advanced-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+}
 
-    .search-filters-container {
-        margin-bottom: 0.22rem;
-        display: flex;
-        width: 83.5rem;
-        justify-content: space-between;
-        align-items: center;
+.main-advanced-container::-webkit-scrollbar {
+    width: 1.2rem;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.main-advanced-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, black, transparent);
+    border-radius: 5px;
+}
+
+.main-advanced-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(transparent, rgb(255, 255, 255), transparent);
+}
+
+.general-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("https://www.xtrafondos.com/descargar.php?id=6354&resolucion=3840x2160");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
+}
+
+.search-filters-container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.advanced-container {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+
+    .inv-box {
+        height: 6rem;
     }
 
     .advanced-container {
+        margin-top: 0;
+    }
+
+    .filter-container{
+        margin-bottom: 1.3rem;
+    }
+
+    .inv-box {
+        height: 6rem;
+    }
+
+    .main-advanced-container {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .search-filters-container {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-    }
-    
-    .filter-container {
-        width: 19.3rem;
-        margin-right: 0.5rem;
-        display: flex;
-        justify-content: space-between;
         align-items: center;
+        width: 10rem;
     }
+}
 
-    .select-container {
-        width: 11rem;
-        border-radius: 1rem;
-        padding: 0.4rem;
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+@media (min-width: 768px) {
+
+    .inv-box-homepage {
+        height: 6rem;
     }
+}
 
-        .option-select {
-            width: 6rem;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 1rem;
-            cursor: pointer;
-            box-shadow: none;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+.select-container {
+    width: 11rem;
+    border-radius: 1rem;
+    padding: 0.4rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
-        .group {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
+.option-select {
+    width: 6rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    box-shadow: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+}
 
-        .clear {
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            width: 5.5rem;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 1rem;
-            padding: 0.79rem;
-            transition: 0.3s
-        }
+.group {
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
-        .clear:hover {
-            background-color: rgba(0, 0, 0, 1);
-          }
+.clear {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 5.5rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+    padding: 0.8rem;
+    transition: 0.3s
+}
 
-        .no-results {
-            margin-top: 4rem;
-            color: white;
-          }
-      
-    
-    
+.clear:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.no-results {
+    margin-top: 4rem;
+    color: white;
+}

@@ -3,7 +3,6 @@ import {Link} from "react-router-dom"
 import "../Navbar/Navbar.css"
 
 function Navbar() {
-
     return(
         <div className="main-navbar-container">
             <div className="navbar-container">

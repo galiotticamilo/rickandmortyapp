@@ -1,37 +1,99 @@
-    .main-navbar-container {
-        background-color: rgba(0, 0, 0, 0.6);
-        height: 5rem;
-        color: white;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 1.5rem;
+.main-navbar-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0rem 0rem 0.5rem black;
+    height: 6rem;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.navbar-container {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0rem 1.2rem;
+}
+
+.links-container {
+    margin: 0rem 0.5rem 0rem 0.5rem;
+    width: 31rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar-link {
+    display: flex;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: .3s;
+}
+
+.navbar-link:hover {
+    color: white
+}
+
+.rick-morty {
+    text-shadow: 0.7rem 0.5rem 0.5rem black;
+    color: rgba(255, 255, 255, 0.8);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.rick-morty:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.main-navbar-container{
+    width: 100%;
+}
+
+@media (max-width: 1280px) {
+    .navbar-container{
+        width: 57rem;
     }
-    
-    .navbar-container {
-        text-decoration: none;
-        display: flex;
-        justify-content: space-between;
-        width: 95rem;
+
+    .links-container{
+        width: 27rem;
     }
-    
-    .links-container {
-        width: 31rem;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+}
+
+@media (max-width: 768px) {
+    .navbar-container{
+        width: 43rem;
     }
-    
+
+    .links-container{
+        width: 20rem;
+    }
+}
+
+@media (max-width: 576px) {
     .navbar-link {
+        font-size: 1rem;
+        margin-left: 0.4rem;
+    }
+
+    .navbar-container{
+        margin: 0rem 1rem;
+        width: 85%;
+    }
+
+    .links-container{
+        width: 60%;
         display: flex;
-        justify-content: center;
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        width: 9rem;
-        transition: .3s;
+        justify-content: flex-end;
+        align-items: center;
     }
-    
-    .navbar-link:hover {
-        color: white
+
+    .rick-morty{
+        width: 1rem;
+        font-size: 0.6rem;
     }
+}
+

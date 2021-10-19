@@ -14,7 +14,7 @@ function Character( {data} ) {
                             <img className="img" src={elem.image}/>
                         </Link>
                         <div className="info-container">
-                            <div>
+                            <div className="species">
                                 {elem.species}
                             </div>
                             {

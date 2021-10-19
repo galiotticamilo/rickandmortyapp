@@ -21,15 +21,13 @@ function CharacterDetail() {
 
     return(
         <div className="main-detail-container">
-            <div className="detail-container">
                     {character && 
                         <div className="card">
-                            <img src={character.image}/>
+                            <img className="detail-img"src={character.image}/>
                             <div className="data">
-                                <div>
-                                    <div>Name: <span>{character.name}</span></div>
-                                    <div>Specie: <span>{character.species}</span></div>
-                                    <div>Gender: <span>{character.gender}</span></div>
+                                    <div className="detail-single-info">Name: <span>{character.name}</span></div>
+                                    <div className="detail-single-info">Specie: <span>{character.species}</span></div>
+                                    <div className="detail-single-info">Gender: <span>{character.gender}</span></div>
                                     {
                                     (character.status === "Alive") ? 
                                         <div className="status">
@@ -43,15 +41,13 @@ function CharacterDetail() {
                                         </div> 
                                     }
                                     <div>Origin: <span>{character.origin.name}</span></div>
-                                    <div>Location: <span>{character.location.name}</span></div>
-                                </div>
-                                <Link className="back-button-container" to="/advanced-search">
-                                    <div className="back-button">Back</div>
-                                </Link>
+                                    <div className="location-margin">Location: <span>{character.location.name}</span></div>
                             </div>
+                            <Link className="back-button-container" to="/advanced-search">
+                                <div className="back-button">Back</div>
+                            </Link>
                         </div>
                     }
-            </div>
         </div>
     )
 }

@@ -31,9 +31,8 @@ function Random() {
                 {randomCharacter &&
                     randomCharacter.map(elem => 
                         <div className="random-detail-container">
-                            <div className="random-info-container">
                                 <div className="card">
-                                    <img src={elem.image}/>
+                                    <img className="detail-img"src={elem.image}/>
                                     <div className="data">
                                         <div>
                                             <div>Name: <span>{elem.name}</span></div>
@@ -56,7 +55,6 @@ function Random() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     )
                 }

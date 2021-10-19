@@ -20,7 +20,7 @@ function Pagination() {
                 {info.prev ? 
                 <button className="prev-next" onClick={onPrev}> &lt; Prev</button>
                 :
-                <div></div>
+                <button className="inv-button"></button>
                 }
                 {info.next && 
                 <button className="prev-next" onClick={onNext}>Next &gt;</button>

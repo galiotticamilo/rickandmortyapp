@@ -11,8 +11,46 @@ function Advanced() {
 
     const [stateFilter, setStateFilter] = useState({})
 
+    const genderArr = [
+        {
+            gender: "female"
+        },
+        {
+            gender: "male"
+        },
+        {
+            gender: "unknown"
+        }
+    ]
+
+    const statusArr = [
+        {
+            status: "alive"
+        },
+        {
+            status: "dead"
+        },
+        {
+            status: "unknown"
+        }
+    ]
+
+    const speciesArr = [
+        {
+            species: "human"
+        },
+        {
+            species: "alien"
+        },
+        {
+            species: "unknown"
+        }
+    ]
+
     const clear = () => {
+        console.log(searchValue)
         setUrlAdvanced(`${urlDefault}/?name=${searchValue}`)
+        setSearchValue("")
         setStateFilter({})
     }
     
@@ -39,47 +77,45 @@ function Advanced() {
     }, [urlAdvanced, searchValue, stateFilter])
 
     return(
-        <div className="main-advanced-container">
-            <div className="advanced-container">
-                <div className="search-filters-container">
-                    <Search className="input-search" searchUpdate={searchUpdate}/>
-                    <div className="filter-container">
-                        <div className="clear" onClick={clear}>Clear filters</div>
-                        <div className="select-container">
-                            <label>Filter by</label>
-                            <select className="option-select">
-                                <option defaultValue hidden>Select</option>
-                                <optgroup className="group" label="Gender">
-                                    <option onClick={() => filter("female", "gender")}>Female</option>
-                                    <option onClick={() => filter("male", "gender")}>Male</option>
-                                    <option onClick={() => filter("unknown", "gender")}>Unknown</option>
-                                </optgroup>
-                                <optgroup className="group" label="Status">
-                                    <option onClick={() => filter("alive", "status")}>Alive</option>
-                                    <option onClick={() => filter("dead", "status")}>Dead</option>
-                                    <option onClick={() => filter("unknown", "status")}>Unknown</option>
-                                </optgroup>
-                                <optgroup className="group" label="Species">
-                                    <option onClick={() => filter("human", "species")}>Human</option>
-                                    <option onClick={() => filter("alien", "species")}>Alien</option>
-                                    <option onClick={() => filter("unknown", "species")}>Unknown</option>
-                                </optgroup>
-                            </select>
+        <div className="general-container">
+            <div className="main-advanced-container">
+                <div className="advanced-container">
+                    <div className="search-filters-container">
+                        <div className="inv-box"></div>
+                        <Search className="input-search" searchUpdate={searchUpdate}/>
+                        <div className="filter-container">
+                            <div className="clear" onClick={clear}>Clear filters</div>
+                            <div className="select-container">
+                                <label>Filter by</label>
+                                <select className="option-select">
+                                    <option defaultValue hidden>Select</option>
+                                    <optgroup className="group" label="Gender">
+                                        {genderArr.map(elem => <option onClick={() => filter(elem.gender, "gender")}>{elem.gender}</option>)}
+                                    </optgroup>
+                                    <optgroup className="group" label="Status">
+                                        {statusArr.map(elem => <option onClick={() => filter(elem.status, "status")}>{elem.status}</option>)}
+                                    </optgroup>
+                                    <optgroup className="group" label="Species">
+                                        {speciesArr.map(elem => <option onClick={() => filter(elem.species, "species")}>{elem.species}</option>)}
+                                    </optgroup>
+                                </select>
+                            </div>
                         </div>
+                        {characters && <Pagination updateDatos={updateDatos}/>}
                     </div>
+                    
                 </div>
-                {characters && <Pagination updateDatos={updateDatos}/>}
+                {
+                    characters ?
+                    <div>
+                        <Character
+                        data={characters}
+                        />
+                    </div> : 
+                    <h2 className="no-results">{noResults}...</h2>
+                }
+                {characters && <Pagination/>}
             </div>
-            {
-                characters ?
-                <div className="container">
-                    <Character
-                    data={characters}
-                    />
-                </div> : 
-                <h2 className="no-results">{noResults}...</h2>
-            }
-            {characters &&<Pagination/>}
         </div>
     )
 }
