@@ -4,7 +4,7 @@ import "../Navbar/Navbar.css"
 
 function Navbar() {
     return(
-        <div className="main-navbar-container">
+        <nav className="main-navbar-container">
             <div className="navbar-container">
                 <Link className="rick-morty"to="/">
                     <h1>Rick&Morty Wiki</h1>
@@ -21,7 +21,7 @@ function Navbar() {
                     </Link>
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }
 

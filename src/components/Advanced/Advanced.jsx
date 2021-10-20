@@ -9,7 +9,8 @@ function Advanced() {
 
     const {searchValue, getCharacters, characters, updateDatos, setSearchValue, urlDefault, urlAdvanced, setUrlAdvanced, noResults} = useRAM()
 
-    const [stateFilter, setStateFilter] = useState({})
+    const [stateFilter, setStateFilter] = useState()
+    const [filterStatus, setFilterStatus] = useState(true)
 
     const genderArr = [
         {
@@ -48,12 +49,20 @@ function Advanced() {
     ]
 
     const clear = () => {
-        console.log(searchValue)
-        setUrlAdvanced(`${urlDefault}/?name=${searchValue}`)
         setSearchValue("")
-        setStateFilter({})
+        setUrlAdvanced(`${urlDefault}/?name=${searchValue}`)
+        setStateFilter()
+        isFilter()
     }
-    
+
+    const isFilter = () => {
+        if (stateFilter) {
+            setFilterStatus(false)
+        } else {
+            setFilterStatus(true)
+        }
+    }
+
     const filter = (value, tipe) => {
         setStateFilter({value, tipe})
 
@@ -73,7 +82,12 @@ function Advanced() {
     }
 
     useEffect(() => {
-        getCharacters(urlAdvanced)
+        if (!searchValue) { 
+            getCharacters(urlDefault)
+            isFilter()
+        } else {
+            getCharacters(urlAdvanced)
+        }
     }, [urlAdvanced, searchValue, stateFilter])
 
     return(
@@ -82,15 +96,15 @@ function Advanced() {
                 <div className="advanced-container">
                     <div className="search-filters-container">
                         <div className="inv-box"></div>
-                        <Search className="input-search" searchUpdate={searchUpdate}/>
+                        <Search className="input-search" searchUpdate={searchUpdate} sValue={searchValue}/>
                         <div className="filter-container">
                             <div className="clear" onClick={clear}>Clear filters</div>
                             <div className="select-container">
                                 <label>Filter by</label>
                                 <select className="option-select">
-                                    <option defaultValue hidden>Select</option>
                                     <optgroup className="group" label="Gender">
                                         {genderArr.map(elem => <option onClick={() => filter(elem.gender, "gender")}>{elem.gender}</option>)}
+                                        <option selected={filterStatus} hidden>Select</option> 
                                     </optgroup>
                                     <optgroup className="group" label="Status">
                                         {statusArr.map(elem => <option onClick={() => filter(elem.status, "status")}>{elem.status}</option>)}
