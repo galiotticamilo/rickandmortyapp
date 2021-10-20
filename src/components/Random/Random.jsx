@@ -5,7 +5,7 @@ import "../Random/Random.css"
 
 function Random() {
 
-    const {count, getCharacters, urlDefault} = useRAM()
+    const {charactersInfo, getCharacters, urlDefault} = useRAM()
 
     const [randomCharacter, setRandomCharacter] = useState()
 
@@ -18,47 +18,43 @@ function Random() {
     }
 
     const getRandomCharacter = async () => {
-        const response = await fetch(`https://rickandmortyapi.com/api/character/${randomNum(count)}`)
+        const response = await fetch(`${urlDefault}/${randomNum(charactersInfo.count)}`)
         const data = await response.json()
-        let array = []
-        array.push(data)
-        setRandomCharacter(array)
+        setRandomCharacter(data)
     }
     
     return(
         <div className="main-random-container">
             <div className="buttom-random-detail-container">
                 {randomCharacter &&
-                    randomCharacter.map(elem => 
                         <div className="random-detail-container">
                                 <div className="card">
-                                    <img className="detail-img"src={elem.image}/>
+                                    <img className="detail-img"src={randomCharacter.image}/>
                                     <div className="data">
                                         <div>
-                                            <div>Name: <span>{elem.name}</span></div>
-                                            <div>Specie: <span>{elem.species}</span></div>
-                                            <div>Gender: <span>{elem.gender}</span></div>
+                                            <div>Name: <span>{randomCharacter.name}</span></div>
+                                            <div>Specie: <span>{randomCharacter.species}</span></div>
+                                            <div>Gender: <span>{randomCharacter.gender}</span></div>
                                             {
-                                            (elem.status === "Alive") ? 
+                                            (randomCharacter.status === "Alive") ? 
                                                 <div className="status">
                                                     <div className="green">•</div>
-                                                    {elem.status} 
+                                                    {randomCharacter.status} 
                                                 </div> 
-                                                : 
+                                                :
                                                 <div className="status">
                                                     <div className="red">•</div>
-                                                    {elem.status} 
+                                                    {randomCharacter.status} 
                                                 </div> 
                                             }
-                                            <div>Origin: <span>{elem.origin.name}</span></div>
-                                            <div>Location: <span>{elem.location.name}</span></div>
+                                            <div>Origin: <span>{randomCharacter.origin.name}</span></div>
+                                            <div>Location: <span>{randomCharacter.location.name}</span></div>
                                         </div>
                                     </div>
                                 </div>
                         </div>
-                    )
                 }
-                {count &&
+                {charactersInfo.count &&
                     <button className="random-button" onClick={getRandomCharacter}>
                         <div>Generate random character</div>
                     </button> 

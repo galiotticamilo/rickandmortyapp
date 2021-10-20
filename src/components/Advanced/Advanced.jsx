@@ -2,12 +2,11 @@ import React, {useEffect, useState} from "react"
 import Character from "../Character/Character"
 import Pagination from "../Pagination/Pagination"
 import useRAM from "../../context/Context"
-import Search from "../Search/Search"
 import "../Advanced/Advanced.css"
 
 function Advanced() {
 
-    const {searchValue, getCharacters, characters, updateDatos, setSearchValue, urlDefault, urlAdvanced, setUrlAdvanced, noResults} = useRAM()
+    const {searchValue, getCharacters, updateDatos, setSearchValue, urlDefault, urlAdvanced, setUrlAdvanced, charactersInfo} = useRAM()
 
     const [stateFilter, setStateFilter] = useState()
     const [filterStatus, setFilterStatus] = useState(true)
@@ -89,7 +88,7 @@ function Advanced() {
         } else {
             getCharacters(urlAdvanced)
         }
-    }, [urlAdvanced, searchValue, stateFilter])
+    }, [searchValue, urlAdvanced, stateFilter])
 
     return(
         <div className="general-container">
@@ -97,39 +96,44 @@ function Advanced() {
                 <div className="advanced-container">
                     <div className="search-filters-container">
                         <div className="inv-box"></div>
-                        <Search className="input-search" searchUpdate={searchUpdate} sValue={searchValue}/>
+                        <input 
+                            className="search" 
+                            placeholder="Search" 
+                            onChange={searchUpdate} 
+                            value={searchValue ? searchValue : ''} 
+                            type="text" 
+                        />
                         <div className="filter-container">
                             <div className="clear" onClick={clear}>Clear filters</div>
                             <div className="select-container">
                                 <label>Filter by</label>
+                                
                                 <select className="option-select">
                                     <optgroup className="group" label="Gender">
-                                        {genderArr.map(elem => <option onClick={() => filter(elem.gender, "gender")}>{elem.gender}</option>)}
+                                        {genderArr.map(elem => <option className="single-option" onClick={() => filter(elem.gender, "gender")}>{elem.gender}</option>)}
                                         <option selected={filterStatus} hidden>Select</option> 
                                     </optgroup>
                                     <optgroup className="group" label="Status">
-                                        {statusArr.map(elem => <option onClick={() => filter(elem.status, "status")}>{elem.status}</option>)}
+                                        {statusArr.map(elem => <option className="single-option" onClick={() => filter(elem.status, "status")}>{elem.status}</option>)}
                                     </optgroup>
                                     <optgroup className="group" label="Species">
-                                        {speciesArr.map(elem => <option onClick={() => filter(elem.species, "species")}>{elem.species}</option>)}
+                                        {speciesArr.map(elem => <option className="single-option" onClick={() => filter(elem.species, "species")}>{elem.species}</option>)}
                                     </optgroup>
                                 </select>
                             </div>
                         </div>
-                        {characters && <Pagination updateDatos={updateDatos}/>}
+                        {charactersInfo.characters && <Pagination updateDatos={updateDatos}/>}
                     </div>
                     
                 </div>
                 {
-                    characters ?
+                    charactersInfo.characters ?
                     <div>
-                        <Character
-                        data={characters}
-                        />
+                        <Character data={charactersInfo.characters}/>
                     </div> : 
-                    <h2 className="no-results">{noResults}...</h2>
+                    <h2 className="no-results">{charactersInfo.noResults}...</h2>
                 }
-                {characters && <Pagination/>}
+                {charactersInfo.characters && <Pagination/>}
             </div>
         </div>
     )

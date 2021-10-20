@@ -4,25 +4,25 @@ import "../Pagination/Pagination.css"
 
 function Pagination() {
 
-    const {info, getCharacters} = useRAM()
+    const {charactersInfo, getCharacters} = useRAM()
 
     const onPrev = () => {
-        getCharacters(info.prev)
+        getCharacters(charactersInfo.info.prev)
     }
     
     const onNext = () => {
-        getCharacters(info.next)
+        getCharacters(charactersInfo.info.next)
     }
 
     return(
         <div>
             <div className="container-buttons">
-                {info.prev ? 
+                {charactersInfo.info.prev ? 
                 <button className="prev-next" onClick={onPrev}> &lt; Prev</button>
                 :
                 <button className="inv-button"></button>
                 }
-                {info.next && 
+                {charactersInfo.info.next && 
                 <button className="prev-next" onClick={onNext}>Next &gt;</button>
                 }
             </div>

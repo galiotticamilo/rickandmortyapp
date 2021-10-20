@@ -8,12 +8,15 @@ export const RAMProvider = props => {
 
     const urlDefault = `https://rickandmortyapi.com/api/character`
 
-    const [characters, setCharacters] = useState()
-    const [info, setInfo] = useState("")
+    const [charactersInfo, setCharactersInfo] = useState({
+        characters: [],
+        info: "",
+        count: 0,
+        noResults: ""
+    })
+
     const [searchValue, setSearchValue] = useState("")
-    const [count, setCount] = useState(0)
     const [urlAdvanced, setUrlAdvanced] = useState(urlDefault)
-    const [noResults, setNoResults] = useState("")
 
     const updateDatos = (event) => {
         setSearchValue(event.target.value)
@@ -23,31 +26,31 @@ export const RAMProvider = props => {
         const response = await fetch(url)
         const data = await response.json()
         if(data.error === "There is nothing here"){
-            setNoResults(data.error)
-            setInfo("")
-            setCharacters("")
-            setCount("")
+            setCharactersInfo({
+                characters: "",
+                info: "",
+                count: 0,
+                noResults: data.error
+            })
         } else {
-            setInfo(data.info)
-            setCharacters(data.results)
-            setCount(data.info.count)
+            setCharactersInfo({
+                characters: data.results,
+                info: data.info,
+                count: data.info.count
+            })
         } 
     }
     
     return (
         <RAMContext.Provider value={{
             getCharacters,
-            info,
-            characters,
+            charactersInfo,
             searchValue,
             setSearchValue,
             updateDatos,
-            setInfo,
-            count,
             urlDefault,
             urlAdvanced, 
-            setUrlAdvanced,
-            noResults
+            setUrlAdvanced
             }}
             >
             {props.children}
