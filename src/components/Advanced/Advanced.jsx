@@ -58,8 +58,10 @@ function Advanced() {
     const isFilter = () => {
         if (stateFilter) {
             setFilterStatus(false)
+            getCharacters(urlAdvanced)
         } else {
             setFilterStatus(true)
+            getCharacters(urlDefault)
         }
     }
 
@@ -82,8 +84,7 @@ function Advanced() {
     }
 
     useEffect(() => {
-        if (!searchValue) { 
-            getCharacters(urlDefault)
+        if (!searchValue) {
             isFilter()
         } else {
             getCharacters(urlAdvanced)
